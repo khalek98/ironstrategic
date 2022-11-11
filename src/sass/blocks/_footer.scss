@@ -1,0 +1,190 @@
+.footer {
+  background-color: $main-color;
+
+  &__top {
+    margin: 0 auto;
+    max-width: 1250px;
+    height: 340px;
+    position: relative;
+    padding: 50px 0px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    column-gap: 45px;
+  }
+
+  &-map {
+    position: absolute;
+    top: 50px;
+    left: 203px;
+    width: 470px;
+    height: 240px;
+    background: url('../icons/footer/map.svg') center (center/contain) no-repeat;
+
+    &__point {
+      position: absolute;
+      height: 17px;
+      width: 17px;
+      background: url('../icons/footer/location_default.svg') center (center/cover) no-repeat;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      // &:hover,
+      &_active {
+        height: 28px;
+        width: 28px;
+        background: url('../icons/footer/location_hover.svg') center (center/cover) no-repeat;
+      }
+    }
+  }
+
+  &__logo {
+    width: 136px;
+    height: 80px;
+    svg {
+      height: 100%;
+      width: 100%;
+      fill: #fff;
+    }
+  }
+
+  &-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    &__subtitle {
+      font-family: 'Lexend Deca';
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+    }
+
+    &__list {
+      display: none;
+      padding: 20px 20px 20px 40px;
+      position: absolute;
+      top: -90px;
+      min-height: 270px;
+      min-width: 300px;
+      background: #ffffff;
+      border: 2px solid #c3b18d;
+      row-gap: 10px;
+      list-style-type: none;
+    }
+
+    &__item {
+      font-family: 'Lexend Deca';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 30px;
+      letter-spacing: 0.05em;
+      color: $main-color;
+      cursor: pointer;
+
+      &:before {
+        transition: all 0.2s ease-in-out;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -20px;
+        width: 0;
+        height: 1px;
+        border: 1px solid $main-color;
+      }
+
+      &:hover {
+        position: relative;
+        font-weight: 500;
+
+        &:before {
+          width: 10px;
+        }
+      }
+    }
+
+    &__address {
+      font-family: 'Lexend Deca';
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+    }
+
+    &__email {
+      font-family: 'Lexend Deca';
+      font-weight: 400;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      text-decoration: none;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &:active {
+        color: #adb5bd;
+      }
+    }
+
+    &__selected {
+      display: flex;
+      padding-bottom: 7px;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 32px;
+      width: 200px;
+      border-bottom: 1px solid #c3b18d;
+      cursor: pointer;
+
+      span {
+        font-family: 'Lexend Deca';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.05em;
+        color: #c3b18d;
+      }
+    }
+
+    &_contacts {
+      width: 300px;
+      position: relative;
+    }
+
+    &_mailing {
+      max-width: 190px;
+    }
+  }
+
+  &__copy-icon {
+    height: 20px;
+    width: 20px;
+    // margin-right: 5px;
+  }
+
+  &__divider {
+    width: 100%;
+    border: 1px solid #ffffff;
+    border-bottom: none;
+  }
+
+  &__rights {
+    padding: 20px 0;
+    font-family: 'Lexend Deca';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-align: center;
+
+    br {
+      display: none;
+    }
+  }
+}

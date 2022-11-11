@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville&family=Lexend+Deca:wght@300;400;500&display=swap');
+// @font-face {
+//   font-family: 'Avenir';
+//   src: url('../fonts/AvenirLTStd-Book.otf') format('opentype');
+// }
+
+@font-face {
+  font-family: 'Avenir';
+  src: local('Avenir Light'), local('Avenir-Light'),
+    url('../fonts/Avenir-Light.woff2') format('woff2'),
+    url('../fonts/Avenir-Light.woff') format('woff'),
+    url('../fonts/Avenir-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@import './base/variables';
+
+* {
+  font-family: 'Avenir', serif;
+  font-family: 'Baskervville', serif;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+address {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+@import './blocks/header';
+@import './blocks/main';
+@import './blocks/services';
+@import './blocks/footer';
+@import './blocks/media';

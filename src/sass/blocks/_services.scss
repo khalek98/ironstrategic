@@ -1,0 +1,105 @@
+.services {
+  padding: 120px 0;
+  // min-height: 1060px;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-family: 'Lexend Deca';
+    font-weight: 300;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $main-color;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 430px;
+      height: 1px;
+      top: 50%;
+      border: 1px solid #274163;
+      transform: translateX(100%);
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 430px;
+      height: 1px;
+      top: 50%;
+      border: 1px solid #274163;
+      transform: translateX(-100%);
+    }
+  }
+
+  &__wrapper {
+    margin: 0 auto;
+    margin-top: 160px;
+    max-width: 1170px;
+    display: grid;
+    justify-content: space-between;
+    justify-items: center;
+    grid-template: repeat(2, auto) / repeat(3, 340px);
+    gap: 140px 80px;
+  }
+
+  &-block {
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1px;
+
+    &__logo {
+      height: 80px;
+      width: 80px;
+    }
+    &:nth-of-type(1) > &__logo {
+      background: url('../icons/services/crisis-management.svg') center (center/contain) no-repeat;
+    }
+    &:nth-of-type(2) > &__logo {
+      background: url('../icons/services/project-management.svg') center (center/contain) no-repeat;
+    }
+    &:nth-of-type(3) > &__logo {
+      background: url('../icons/services/marketing-strategy.svg') center (center/contain) no-repeat;
+    }
+    &:nth-of-type(4) > &__logo {
+      background: url('../icons/services/brand-awareness.svg') center (center/contain) no-repeat;
+    }
+    &:nth-of-type(5) > &__logo {
+      background: url('../icons/services/it-services.svg') center (center/contain) no-repeat;
+      height: 84px;
+    }
+    &:nth-of-type(6) > &__logo {
+      background: url('../icons/services/financial-management.svg') center (center/contain)
+        no-repeat;
+    }
+
+    &__subtitle {
+      margin: 0;
+      margin-top: 20px;
+      max-width: 170px;
+
+      font-family: 'Lexend Deca';
+      font-weight: 400;
+      font-size: 24px;
+      letter-spacing: 0.05em;
+      color: $main-color;
+    }
+
+    &__descr {
+      margin-top: 16px;
+
+      font-family: 'Avenir';
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0.03em;
+      color: $main-color;
+    }
+  }
+}

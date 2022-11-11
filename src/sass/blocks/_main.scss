@@ -1,0 +1,28 @@
+.main {
+  &__video {
+    height: 600px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__title {
+    width: 820px;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-family: 'Baskervville';
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 83px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: $main-color;
+  }
+
+  &__arrow {
+    margin: 0 auto;
+    margin-top: 34px;
+    background: url('../icons/arrow-logo.svg') center (center/cover) no-repeat;
+    height: 80px;
+    width: 70px;
+  }
+}
