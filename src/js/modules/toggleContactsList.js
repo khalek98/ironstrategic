@@ -1,6 +1,5 @@
 const toggleContactsList = () => {
   const selectedBlock = document.querySelector('.footer-block__selected'),
-    selectedText = selectedBlock.querySelector('span'),
     contactsList = document.querySelector('.footer-block__list');
 
   let stateList = false;
@@ -16,8 +15,6 @@ const toggleContactsList = () => {
     });
   };
 
-  // openList();
-
   document.body.addEventListener('click', (e) => {
     if (
       stateList &&
@@ -30,7 +27,6 @@ const toggleContactsList = () => {
   });
 
   document.body.addEventListener('keydown', (e) => {
-    // console.log(e.code);
     if (e.code === 'Escape') closeList();
   });
 
