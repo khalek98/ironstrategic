@@ -1,3 +1,5 @@
+import { closeList } from './toggleContactsList';
+
 const renderContactsList = (list) => {
   const contactsList = document.querySelector('.footer-block__list'),
     selectedText = document.querySelector('.footer-block__selected span'),
@@ -12,6 +14,8 @@ const renderContactsList = (list) => {
   const points = [];
 
   const setContinent = (e, item, point = null) => {
+    console.log(e.code);
+    if (e.code && e.code !== 'Enter') return;
     selectedText.innerHTML = item.continent;
     mailText.innerText = item.mail;
     mailText.href = `mailto:${item.mail}`;
@@ -29,6 +33,7 @@ const renderContactsList = (list) => {
       left: ${item.location.left - 6}px;
     `;
     }
+    closeList(contactsList);
   };
 
   list.forEach((item, i) => {
@@ -36,7 +41,9 @@ const renderContactsList = (list) => {
     const point = document.createElement('div');
     elem.innerHTML = item.continent;
     elem.classList.add('footer-block__item');
+    elem.setAttribute('tabindex', 0);
     elem.addEventListener('click', (e) => setContinent(e, item, point));
+    elem.addEventListener('keydown', (e) => setContinent(e, item, point));
 
     if (i === 0) {
       point.classList.add('footer-map__point', 'footer-map__point_active');

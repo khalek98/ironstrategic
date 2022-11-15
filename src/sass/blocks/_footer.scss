@@ -26,7 +26,7 @@
       width: 17px;
       background: url('../icons/footer/location_default.svg') center (center/cover) no-repeat;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.2s ease-in-out;
 
       // &:hover,
       &_active {
@@ -94,7 +94,8 @@
         border: 1px solid $main-color;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         position: relative;
         font-weight: 500;
 

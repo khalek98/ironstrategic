@@ -70,8 +70,15 @@
     }
   }
 
-  .footer__top {
-    column-gap: 40px;
+  .footer {
+    &__top {
+      column-gap: 40px;
+      padding: 50px 20px;
+    }
+
+    &-map {
+      left: 185px;
+    }
   }
 }
 
@@ -125,6 +132,7 @@
       height: unset;
       justify-items: center;
       gap: 0;
+      padding: 50px 0;
     }
 
     &-map {
