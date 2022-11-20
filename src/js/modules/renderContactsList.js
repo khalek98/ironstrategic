@@ -12,9 +12,9 @@ const renderContactsList = (list) => {
   });
 
   const points = [];
+  let activePoint;
 
-  const setContinent = (e, item, point = null) => {
-    console.log(e.code);
+  const setContinent = (e, item, point) => {
     if (e.code && e.code !== 'Enter') return;
     selectedText.innerHTML = item.continent;
     mailText.innerText = item.mail;
@@ -33,6 +33,7 @@ const renderContactsList = (list) => {
       left: ${item.location.left - 6}px;
     `;
     }
+    activePoint = point;
     closeList(contactsList);
   };
 
@@ -44,6 +45,22 @@ const renderContactsList = (list) => {
     elem.setAttribute('tabindex', 0);
     elem.addEventListener('click', (e) => setContinent(e, item, point));
     elem.addEventListener('keydown', (e) => setContinent(e, item, point));
+
+    point.addEventListener('mouseenter', () => {
+      point.classList.add('footer-map__point', 'footer-map__point_active');
+      point.style.cssText = `
+      top: ${item.location.top - 11}px;
+      left: ${item.location.left - 6}px;
+    `;
+    });
+    point.addEventListener('mouseleave', () => {
+      if (activePoint === point) return;
+      point.classList.remove('footer-map__point_active');
+      point.style.cssText = `
+      top: ${item.location.top}px;
+      left: ${item.location.left}px;
+    `;
+    });
 
     if (i === 0) {
       point.classList.add('footer-map__point', 'footer-map__point_active');

@@ -6,6 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
+const webpack = require('webpack-stream');
 
 gulp.task('server', function () {
   browserSync({
@@ -31,7 +32,7 @@ gulp.task('styles', function () {
 gulp.task('watch', function () {
   gulp.watch('src/sass/**/*.+(scss|sass|css)', gulp.parallel('styles'));
   gulp.watch('src/*.html').on('change', gulp.parallel('html'));
-  // gulp.watch("src/js/**/*.js").on('change', gulp.parallel('scripts'));
+  gulp.watch('src/js/**/*.js').on('change', gulp.parallel('build-dev'));
 
   gulp.watch('src/fonts/**/*').on('all', gulp.parallel('fonts'));
   gulp.watch('src/icons/**/*').on('all', gulp.parallel('icons'));
@@ -44,6 +45,83 @@ gulp.task('html', function () {
     .src('src/*.html')
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('build-dev', function () {
+  return gulp
+    .src('./src/js/script.js')
+    .pipe(
+      webpack({
+        mode: 'development',
+        output: {
+          filename: 'bundle.js',
+        },
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: [
+                    [
+                      '@babel/preset-env',
+                      {
+                        debug: true,
+                        useBuiltIns: 'usage',
+                        corejs: '3.26',
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+        },
+      }),
+    )
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('build-prod', function () {
+  return gulp
+    .src('./src/js/script.js')
+    .pipe(
+      webpack({
+        mode: 'production',
+        output: {
+          filename: 'bundle.js',
+        },
+        devtool: 'source-map',
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: [
+                    [
+                      '@babel/preset-env',
+                      {
+                        debug: true,
+                        useBuiltIns: 'usage',
+                        corejs: '3.26',
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+        },
+      }),
+    )
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(browserSync.stream());
 });
 
 // gulp.task('scripts', function () {
@@ -78,5 +156,15 @@ gulp.task('sources', function () {
 
 gulp.task(
   'default',
-  gulp.parallel('watch', 'server', 'styles', 'sources', 'fonts', 'icons', 'html', 'images'),
+  gulp.parallel(
+    'watch',
+    'server',
+    'styles',
+    'build-dev',
+    'sources',
+    'fonts',
+    'icons',
+    'html',
+    'images',
+  ),
 );

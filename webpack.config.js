@@ -3,14 +3,16 @@
 let path = require('path');
 
 module.exports = {
-  mode: 'production',
-  entry: '/src/js/script.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, '/dist', '/js'),
-  },
+  // mode: 'production',
+  // entry: '/src/js/script.js',
+  // output: {
+  //   filename: 'bundle.js',
+  //   path: path.join(__dirname, '/dist', '/js'),
+  // },
 
-  devtool: 'source-map',
+  // devtool: 'source-map',
+
+  // watch: true,
 
   module: {
     rules: [
