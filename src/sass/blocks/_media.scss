@@ -129,6 +129,10 @@
 
     &__top {
       grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr 350px;
+      grid-template-areas:
+        'logo contacts mailing'
+        '. . .';
       height: unset;
       justify-items: center;
       gap: 0;
@@ -136,7 +140,9 @@
     }
 
     &-map {
-      display: none;
+      left: 50%;
+      transform: translateX(-50%) scale(1.3);
+      top: 250px;
     }
 
     &__copy-icon {
@@ -225,29 +231,20 @@
 
   .footer {
     &__logo {
-      grid-area: logo;
       width: 185px;
     }
     &__top {
-      padding: 40px 20px;
-      grid-template: 1fr / repeat(2, 1fr);
-      grid-auto-rows: auto;
-      row-gap: 45px;
+      grid-template: 1fr 350px 1fr / repeat(2, 1fr);
       grid-template-areas:
         'logo logo'
+        '. .'
         'contacts mailing';
+      padding: 40px 20px;
     }
 
-    &-block {
-      &_contacts {
-        grid-area: contacts;
-      }
-      &_mailing {
-        grid-area: mailing;
-      }
-      &__email {
-        font-size: 16px;
-      }
+    &-map {
+      transform: translateX(-50%) scale(1.1);
+      top: 210px;
     }
   }
 }
@@ -311,6 +308,11 @@
         'logo'
         'contacts'
         'mailing';
+      row-gap: 45px;
+    }
+
+    &-map {
+      display: none;
     }
 
     &-block {
@@ -331,11 +333,25 @@
         font-size: 18px;
         line-height: 25px;
       }
+
+      &_contacts {
+        width: 100%;
+      }
     }
 
     &__rights {
       br {
         display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 349px) {
+  .footer {
+    &-block {
+      &__email {
+        font-size: 16px;
       }
     }
   }

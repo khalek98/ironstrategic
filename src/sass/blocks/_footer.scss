@@ -8,7 +8,8 @@
     position: relative;
     padding: 50px 0px;
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: [start] 1fr [middleStart] auto [middleEnd] auto [end];
+    grid-template-areas: 'logo contacts mailing';
     column-gap: 45px;
   }
 
@@ -37,6 +38,7 @@
   }
 
   &__logo {
+    grid-area: logo;
     width: 136px;
     height: 80px;
     svg {
@@ -61,18 +63,20 @@
 
     &__list {
       display: none;
-      padding: 20px 20px 20px 40px;
       position: absolute;
       top: -90px;
-      min-height: 270px;
-      min-width: 300px;
+      height: 314px;
+      padding: 20px 20px 20px 40px;
+      width: 300px;
       background: #ffffff;
       border: 2px solid #c3b18d;
       row-gap: 10px;
       list-style-type: none;
+      overflow: hidden;
     }
 
     &__item {
+      position: relative;
       font-family: 'Lexend Deca';
       font-style: normal;
       font-weight: 300;
@@ -82,6 +86,11 @@
       color: $main-color;
       cursor: pointer;
 
+      &:focus-visible,
+      &:focus {
+        outline: solid;
+      }
+
       &:before {
         transition: all 0.2s ease-in-out;
         content: '';
@@ -90,16 +99,17 @@
         left: -20px;
         width: 0;
         height: 1px;
-        border: 1px solid $main-color;
+        border: 0px solid $main-color;
       }
 
       &:hover,
-      &:focus {
-        position: relative;
+      &:focus,
+      &_active {
         font-weight: 500;
 
         &:before {
           width: 10px;
+          border: 1px solid $main-color;
         }
       }
     }
@@ -152,11 +162,13 @@
     }
 
     &_contacts {
+      grid-area: contacts;
       width: 310px;
       position: relative;
     }
 
     &_mailing {
+      grid-area: mailing;
       max-width: 190px;
     }
   }
@@ -164,7 +176,6 @@
   &__copy-icon {
     height: 20px;
     width: 20px;
-    // margin-right: 5px;
   }
 
   &__divider {
@@ -186,5 +197,35 @@
     br {
       display: none;
     }
+  }
+}
+
+@keyframes openList {
+  from {
+    top: 60px;
+    display: none;
+    height: 0px;
+    padding: 0px 20px 0px 40px;
+  }
+  to {
+    top: -90px;
+    height: 314px;
+    padding: 20px 20px 20px 40px;
+    display: grid;
+  }
+}
+
+@keyframes closeList {
+  from {
+    top: -90px;
+    display: grid;
+    height: 314px;
+    padding: 20px 20px 20px 40px;
+  }
+  to {
+    top: 60px;
+    height: 0px;
+    padding: 0px 20px 0px 40px;
+    display: none;
   }
 }
