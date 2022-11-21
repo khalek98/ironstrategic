@@ -1,15 +1,29 @@
 import { closeList } from './toggleContactsList';
 
+const transformMapScale = (map, e) => {
+  const viewWidth =
+    e?.target?.innerWidth || +window.getComputedStyle(document.body).width.replace(/\D/g, '');
+
+  if (viewWidth > 768 && viewWidth < 1200) {
+    map.style.transform = `
+      translateX(-50%) scale(1.3)
+      `;
+  } else if (viewWidth >= 1200) {
+    map.style.transform = 'none';
+  } else {
+    map.style.transform = `
+    translateX(-27%)
+     scale(${(viewWidth / 100) * 0.12})
+    `;
+  }
+};
+
 const renderContactsList = (list) => {
   const contactsList = document.querySelector('.footer-block__list'),
     selectedText = document.querySelector('.footer-block__selected span'),
     mailElem = document.querySelector('.footer-block__email'),
     mailText = document.querySelector('.footer-block__email span'),
     map = document.querySelector('.footer-map');
-
-  mailElem.addEventListener('click', () => {
-    navigator.clipboard.writeText(mailText.innerText);
-  });
 
   const points = [];
   const elements = [];
@@ -93,6 +107,11 @@ const renderContactsList = (list) => {
     map.appendChild(point);
     points.push(point);
   });
+
+  mailElem.addEventListener('click', () => navigator.clipboard.writeText(mailText.innerText));
+  window.addEventListener('resize', (e) => transformMapScale(map, e));
+
+  transformMapScale(map);
 };
 
 export default renderContactsList;

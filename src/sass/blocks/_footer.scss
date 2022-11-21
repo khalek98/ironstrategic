@@ -1,7 +1,7 @@
 .footer {
   background-color: $main-color;
 
-  &__top {
+  &-top {
     margin: 0 auto;
     max-width: 1250px;
     height: 340px;
@@ -86,8 +86,7 @@
       color: $main-color;
       cursor: pointer;
 
-      &:focus-visible,
-      &:focus {
+      &:focus-visible {
         outline: solid;
       }
 
@@ -203,7 +202,6 @@
 @keyframes openList {
   from {
     top: 60px;
-    display: none;
     height: 0px;
     padding: 0px 20px 0px 40px;
   }
@@ -211,14 +209,12 @@
     top: -90px;
     height: 314px;
     padding: 20px 20px 20px 40px;
-    display: grid;
   }
 }
 
 @keyframes closeList {
   from {
     top: -90px;
-    display: grid;
     height: 314px;
     padding: 20px 20px 20px 40px;
   }
@@ -226,6 +222,5 @@
     top: 60px;
     height: 0px;
     padding: 0px 20px 0px 40px;
-    display: none;
   }
 }
