@@ -4,12 +4,18 @@ const transformMapScale = (map, e) => {
   const viewWidth =
     e?.target?.innerWidth || +window.getComputedStyle(document.body).width.replace(/\D/g, '');
 
-  if (viewWidth > 768 && viewWidth < 1200) {
+  if (viewWidth > 768 && viewWidth < 991) {
     map.style.transform = `
-      translateX(-50%) scale(1.3)
-      `;
+    translateX(-32%)
+     scale(${(viewWidth / 100) * 0.12})
+    `;
   } else if (viewWidth >= 1200) {
     map.style.transform = 'none';
+  } else if (viewWidth > 991 && viewWidth < 1200) {
+    map.style.transform = `
+    translateX(-30%)
+     scale(1.1)
+    `;
   } else {
     map.style.transform = `
     translateX(-27%)
