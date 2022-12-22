@@ -9,7 +9,7 @@
     width: 820px;
     margin: 0 auto;
     margin-top: 40px;
-    font-family: 'Baskervville';
+    font-family: "Baskervville";
     font-weight: 400;
     font-size: 70px;
     line-height: 83px;
@@ -21,8 +21,25 @@
   &__arrow {
     margin: 0 auto;
     margin-top: 34px;
-    background: url('../icons/arrow-logo.svg') center (center/cover) no-repeat;
+    background: url("../icons/arrow-logo.svg") center (center/cover) no-repeat;
     height: 80px;
     width: 70px;
+
+    animation-name: jumpArrow;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes jumpArrow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
