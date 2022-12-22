@@ -1,9 +1,7 @@
 import { closeList } from "./toggleContactsList";
 
 const transformMapScale = (map, e) => {
-  const viewWidth =
-    e?.target?.currentTarget?.innerWidth ||
-    +window.getComputedStyle(document.body).width.replace(/\D/g, "");
+  const viewWidth = e?.target?.innerWidth;
 
   if (viewWidth > 768 && viewWidth < 991) {
     map.style.transform = `
